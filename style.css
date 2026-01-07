@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.gauche {
+    background-color: #1a1c2c;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    animation: apparitionGauche 1s;
+}
+
+.ma-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 15px;
+    border: 3px solid #0081c9;
+    display: block;
+    margin: 0 auto;
+}
+
+.profil h1 { text-align: center; font-size: 1.5rem; }
+.profil p { text-align: center; color: #4facfe; }
+
+.bouton {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.bleu { background-color: #0081c9; }
+.rouge { background-color: #ff4d4d; }
+.noir { background-color: #333; }
+.bouton:hover { transform: scale(1.05); }
+
+.badges span {
+    background-color: #2a2d3e;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin: 2px;
+    display: inline-block;
+}
+
+.droite {
+    animation: apparitionDroite 1s;
+}
+
+.carte {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.carte:hover { transform: translateY(-5px); }
+
+.titre-fond {
+    background-color: #2a2d3e;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.item {
+    background-color: #f4f7f6;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@keyframes apparitionGauche {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes apparitionDroite {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+    .page { grid-template-columns: 1fr; }
+}
