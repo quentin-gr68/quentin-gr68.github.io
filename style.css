@@ -1,109 +1,208 @@
+:root {
+    --bg: #05070a;
+    --card-bg: rgba(17, 25, 40, 0.85);
+    --accent: #00e5ff;
+    --text: #f0f2f5;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    margin: 0;
-    padding: 20px;
-}
-
-.page {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.gauche {
-    background-color: #1a1c2c;
-    color: white;
-    padding: 30px;
-    border-radius: 15px;
-    animation: apparitionGauche 1s;
-}
-
-.ma-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: 15px;
-    border: 3px solid #0081c9;
-    display: block;
-    margin: 0 auto;
-}
-
-.profil h1 { text-align: center; font-size: 1.5rem; }
-.profil p { text-align: center; color: #4facfe; }
-
-.bouton {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.bleu { background-color: #0081c9; }
-.rouge { background-color: #ff4d4d; }
-.noir { background-color: #333; }
-.bouton:hover { transform: scale(1.05); }
-
-.badges span {
-    background-color: #2a2d3e;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    margin: 2px;
-    display: inline-block;
-}
-
-.droite {
-    animation: apparitionDroite 1s;
-}
-
-.carte {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    transition: 0.3s;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    height: 100vh;
     overflow: hidden;
 }
-.carte:hover { transform: translateY(-5px); }
 
-.titre-fond {
-    background-color: #2a2d3e;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    margin-top: 0;
-    font-size: 1.2rem;
+.dashboard {
+    display: flex;
+    height: 100vh;
+    padding: 25px;
+    gap: 25px;
 }
 
-.grille {
+.glass {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar { width: 340px; justify-content: space-between; }
+
+.profile-container {
+    position: relative;
+    width: 85%;
+    margin: 0 auto 10px auto;
+}
+
+.profile-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 15px;
+    border: 2px solid var(--accent);
+    object-fit: cover;
+    display: block;
+}
+
+.profile h1 { font-family: 'JetBrains Mono'; font-size: 1.4rem; margin-bottom: 2px; text-align: center; }
+.profile h1 span { color: var(--accent); text-shadow: 0 0 10px rgba(0,229,255,0.3); }
+.subtitle { font-size: 0.85rem; margin-bottom: 8px; opacity: 0.8; text-align: center; }
+
+.contact-list, .languages { display: flex; flex-direction: column; gap: 6px; }
+.info-pill { 
+    background: rgba(0,0,0,0.4); 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    font-size: 0.8rem; 
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+.info-pill:hover {
+    border-color: var(--accent);
+    background: rgba(0, 229, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.linkedin-pill {
+    display: block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+.linkedin-pill:hover { background: #00e5ff33; transform: scale(1.02); }
+
+.github-pill {
+    display: block;
+    border: 1px solid var(--accent); /* Même couleur cyan que LinkedIn */
+    color: var(--accent);           /* Même couleur cyan que LinkedIn */
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 8px;
+    transition: all 0.3s ease;
+}
+
+.github-pill:hover { 
+    background: rgba(0, 229, 255, 0.2); /* Même effet de survol que LinkedIn */
+    transform: scale(1.02); 
+}
+
+.main-content { flex: 2.5; display: flex; flex-direction: column; gap: 25px; min-height: 0; }
+.experience-box { flex: 1.8; min-height: 0; display: flex; flex-direction: column; }
+
+.scroll-area { overflow-y: auto; flex: 1; padding-right: 15px; }
+.scroll-area::-webkit-scrollbar { width: 6px; }
+.scroll-area::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+.card { 
+    margin-bottom: 15px; 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+    padding: 10px; 
+    transition: all 0.3s ease;
+}
+.card:hover { background: rgba(255, 255, 255, 0.03); transform: translateY(-2px); }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.year { color: var(--accent); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.75rem; }
+
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.skill-item { 
+    background: rgba(0,0,0,0.3); 
+    padding: 10px; 
+    border-radius: 12px; 
+    border-left: 4px solid var(--accent);
+    transition: all 0.3s ease;
+}
+.skill-item:hover { transform: scale(1.05); background: rgba(0, 229, 255, 0.05); }
+
+.formation-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--accent);
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 0 10px 10px 0;
+    transition: 0.3s;
+}
+.formation-item:hover { transform: translateX(5px); }
+
+.right-panel { flex: 1.2; display: flex; flex-direction: column; gap: 25px; }
+.expand { flex: 1; }
+
+.section-title {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: 'JetBrains Mono';
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.btn-main { 
+    background: var(--accent); 
+    color: #000; 
+    text-align: center; 
+    padding: 15px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: 800;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+.btn-main:hover { box-shadow: 0 0 20px rgba(0, 229, 255, 0.5); transform: translateY(-2px); }
+
+.loisirs-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 }
-
-.item {
-    background-color: #f4f7f6;
+.loisir-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     padding: 10px;
-    border-radius: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+.loisir-card:hover { transform: translateY(-3px); background: rgba(0, 229, 255, 0.1); }
+
+@media (max-width: 1100px) {
+    body { overflow-y: auto; height: auto; }
+    .dashboard { flex-direction: column; height: auto; }
 }
 
-@keyframes apparitionGauche {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
+.badge-otw {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #00ff88;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    animation: pulse 2s infinite ease-in-out;
 }
 
-@keyframes apparitionDroite {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 800px) {
-    .page { grid-template-columns: 1fr; }
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
 }
